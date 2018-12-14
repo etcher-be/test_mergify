@@ -1,4 +1,4 @@
-# Author: Sankarsan Kampa (a.k.a. k3rn31p4nic)
+Author: Sankarsan Kampa (a.k.a. k3rn31p4nic)
 # Modified by: etcher
 # License: MIT
 
@@ -49,10 +49,10 @@ else {
 }
 
 if ($APPVEYOR_REPO_BRANCH -eq "master") {
-  $BRANCH = "stable"
+  $BRANCH="stable"
 }
 else {
-  $BRANCH = "experimental"
+  $BRANCH="experimental"
 }
 
 if ($env:APPVEYOR_PULL_REQUEST_NUMBER) {
