@@ -51,6 +51,6 @@ artifacts:
     name: dummy
     
 on_success:
-  - ps: ./send.ps1 success $env:WEBHOOK_URL
+  - ps: ./avwh.ps1 success $env:WEBHOOK_URL
 on_failure:
-  - ps: ./send.ps1 failure $env:WEBHOOK_URL
+  - ps: ./avwh.ps1 failure $env:WEBHOOK_URL
