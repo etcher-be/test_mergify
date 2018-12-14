@@ -1,6 +1,8 @@
 pull_request_rules:
-  - name: automatic merge on CI success
+  - name: automatic merge Dependabot updates on CI success
     conditions:
+      - author=dependabot[bot]
+      - base=master
       - status-success=continuous-integration/appveyor/pr
     actions:
       merge:
