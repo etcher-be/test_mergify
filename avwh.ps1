@@ -64,7 +64,7 @@ $WEBHOOK_DATA="{
   ""embeds"": [ {
     ""color"": $EMBED_COLOR,
     ""author"": {
-      ""name"": ""Job #$env:APPVEYOR_JOB_NUMBER (Build #$env:APPVEYOR_BUILD_NUMBER) $STATUS_MESSAGE - $env:APPVEYOR_REPO_NAME"",
+      ""name"": ""New release #$env:BUILD_VERSION (Build #$env:APPVEYOR_BUILD_NUMBER)"",
       ""url"": ""https://ci.appveyor.com/project/$env:APPVEYOR_ACCOUNT_NAME/$env:APPVEYOR_PROJECT_SLUG/build/$BUILD_VERSION"",
       ""icon_url"": ""$AVATAR""
     },
@@ -73,6 +73,11 @@ $WEBHOOK_DATA="{
     ""description"": ""$COMMIT_MESSAGE $CREDITS"",
     ""fields"": [
       {
+        ""name"": ""Direct download"",
+        ""value"": ""[dummy.exe](https://ci.appveyor.com/api/buildjobs/$env:APPVEYOR_JOB_ID/artifacts/dummy)"",
+        ""inline"": true
+      },
+      {
         ""name"": ""Commit"",
         ""value"": ""[``$($env:APPVEYOR_REPO_COMMIT.substring(0, 7))``](https://github.com/$env:APPVEYOR_REPO_NAME/commit/$env:APPVEYOR_REPO_COMMIT)"",
         ""inline"": true
@@ -80,11 +85,6 @@ $WEBHOOK_DATA="{
       {
         ""name"": ""Branch/Tag"",
         ""value"": ""[``$env:APPVEYOR_REPO_BRANCH``](https://github.com/$env:APPVEYOR_REPO_NAME/tree/$env:APPVEYOR_REPO_BRANCH)"",
-        ""inline"": true
-      },
-      {
-        ""name"": ""Direct download"",
-        ""value"": ""[dummy.exe](https://ci.appveyor.com/api/buildjobs/$env:APPVEYOR_JOB_ID/artifacts/dummy)"",
         ""inline"": true
       }
     ],
