@@ -1,4 +1,4 @@
-Author: Sankarsan Kampa (a.k.a. k3rn31p4nic)
+# Author: Sankarsan Kampa (a.k.a. k3rn31p4nic)
 # Modified by: etcher
 # License: MIT
 
