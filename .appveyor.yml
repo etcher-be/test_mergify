@@ -41,3 +41,8 @@ matrix:
 
 build_script:
   - cmd: echo dummy
+
+
+artifacts:
+  - path: dummy
+    name: dummy
