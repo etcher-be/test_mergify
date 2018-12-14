@@ -48,6 +48,13 @@ else {
   $CREDITS="$AUTHOR_NAME authored & $COMMITTER_NAME committed"
 }
 
+if ($APPVEYOR_REPO_BRANCH -eq "master") {
+  $BRANCH = "stable"
+}
+else {
+  $BRANCH = "experimental"
+}
+
 if ($env:APPVEYOR_PULL_REQUEST_NUMBER) {
   $COMMIT_SUBJECT="PR #$env:APPVEYOR_PULL_REQUEST_NUMBER - $env:APPVEYOR_PULL_REQUEST_TITLE"
   $URL="https://github.com/$env:APPVEYOR_REPO_NAME/pull/$env:APPVEYOR_PULL_REQUEST_NUMBER"
@@ -64,7 +71,7 @@ $WEBHOOK_DATA="{
   ""embeds"": [ {
     ""color"": $EMBED_COLOR,
     ""author"": {
-      ""name"": ""New release #$env:BUILD_VERSION (Build #$env:APPVEYOR_BUILD_NUMBER)"",
+      ""name"": ""New #$env:BRANCH release #$env:BUILD_VERSION (Build #$env:APPVEYOR_BUILD_NUMBER)"",
       ""url"": ""https://ci.appveyor.com/project/$env:APPVEYOR_ACCOUNT_NAME/$env:APPVEYOR_PROJECT_SLUG/build/$BUILD_VERSION"",
       ""icon_url"": ""$AVATAR""
     },
