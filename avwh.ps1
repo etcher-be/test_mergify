@@ -84,7 +84,7 @@ $WEBHOOK_DATA="{
       },
       {
         ""name"": ""Direct download"",
-        ""value"": ""[``$env:APPVEYOR_REPO_BRANCH``](https://ci.appveyor.com/api/buildjobs/$env:APPVEYOR_JOB_ID/artifacts/dummy)"",
+        ""value"": ""[dummy.exe](https://ci.appveyor.com/api/buildjobs/$env:APPVEYOR_JOB_ID/artifacts/dummy)"",
         ""inline"": true
       }
     ],
