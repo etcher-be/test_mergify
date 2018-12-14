@@ -1,7 +1,7 @@
 image: Visual Studio 2017
 version: pending.{build}-{branch}
 max_jobs: 1
-skip_branch_with_pr: false
+skip_branch_with_pr: true
 skip_tags: true
 
 # Clone only 50 latest commits
