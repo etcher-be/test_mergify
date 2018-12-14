@@ -49,10 +49,10 @@ else {
 }
 
 if ($env:APPVEYOR_REPO_BRANCH -eq "master") {
-  $BRANCH="stable"
+  $REL_LABEL="New stable release"
 }
 else {
-  $BRANCH="experimental"
+  $REL_LABEL="New experimental release ($env:APPVEYOR_REPO_BRANCH)"
 }
 
 if ($env:APPVEYOR_PULL_REQUEST_NUMBER) {
@@ -71,7 +71,7 @@ $WEBHOOK_DATA="{
   ""embeds"": [ {
     ""color"": $EMBED_COLOR,
     ""author"": {
-      ""name"": ""New $BRANCH release #$env:APPVEYOR_BUILD_VERSION (Build #$env:APPVEYOR_BUILD_NUMBER)"",
+      ""name"": ""$REL_LABEL (Build #$env:APPVEYOR_BUILD_NUMBER)"",
       ""url"": ""https://ci.appveyor.com/project/$env:APPVEYOR_ACCOUNT_NAME/$env:APPVEYOR_PROJECT_SLUG/build/$BUILD_VERSION"",
       ""icon_url"": ""$AVATAR""
     },
