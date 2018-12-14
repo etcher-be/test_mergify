@@ -29,6 +29,9 @@ environment:
     secure: sVfnGb1FQyKRJg6kD9c6aQ==
   SENTRY_AUTH_TOKEN:
     secure: aSyv1ixwt4NsnUs5LXXvu/sAmAetjIuofGIiJ7w7AOm8Q/d5TjzH8spimc35YmEEcIYulc5rhduVrpIiSIvrjCCLidvTscI5W8/TMAE6tB8=
+  WEBHOOK_URL:
+    secure: +q8XKGurCWtBne0OOF7a5nyi9MqP5ov6+xVy0wQui97wAx9I1uWc3ajUHPUqYRfqeQwPbYcUZc6bAXiIqZAPoF8I1ATxTmfZHxi8QnGt1YjTwvjxaJ3wReUJKGsTvWGfQjXldpVVHRR2f2VleL/guZviGhivZxoeYFAvAG3Egok=
+
 
 matrix:
   fast_finish: true
@@ -46,3 +49,10 @@ build_script:
 artifacts:
   - path: dummy
     name: dummy
+    
+on_success:
+  - ps: Invoke-RestMethod https://raw.githubusercontent.com/DiscordHooks/appveyor-discord-webhook/master/send.ps1 -o send.ps1
+  - ps: ./send.ps1 success $env:WEBHOOK_URL
+on_failure:
+  - ps: Invoke-RestMethod https://raw.githubusercontent.com/DiscordHooks/appveyor-discord-webhook/master/send.ps1 -o send.ps1
+  - ps: ./send.ps1 failure $env:WEBHOOK_URL
