@@ -16,12 +16,11 @@ Write-Output "[Webhook]: Sending webhook to Discord..."
 
 Switch ($STATUS) {
   "success" {
-    $EMBED_COLOR=3066993
     $STATUS_MESSAGE="Passed"
     Break
   }
   "failure" {
-    $EMBED_COLOR=15158332
+    
     $STATUS_MESSAGE="Failed"
     Break
   }
@@ -49,10 +48,12 @@ else {
 }
 
 if ($env:APPVEYOR_REPO_BRANCH -eq "master") {
-  $REL_LABEL="New stable release"
+  $REL_LABEL="New stable release"  
+  $EMBED_COLOR=3066993
 }
 else {
   $REL_LABEL="New experimental release ($env:APPVEYOR_REPO_BRANCH)"
+  $EMBED_COLOR=15158332
 }
 
 if ($env:APPVEYOR_PULL_REQUEST_NUMBER) {
