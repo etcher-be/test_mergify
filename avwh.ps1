@@ -48,7 +48,7 @@ else {
   $CREDITS="$AUTHOR_NAME authored & $COMMITTER_NAME committed"
 }
 
-if ($APPVEYOR_REPO_BRANCH -eq "master") {
+if ($env:APPVEYOR_REPO_BRANCH -eq "master") {
   $BRANCH="stable"
 }
 else {
@@ -71,7 +71,7 @@ $WEBHOOK_DATA="{
   ""embeds"": [ {
     ""color"": $EMBED_COLOR,
     ""author"": {
-      ""name"": ""New $env:BRANCH release #$env:APPVEYOR_BUILD_VERSION (Build #$env:APPVEYOR_BUILD_NUMBER)"",
+      ""name"": ""New $BRANCH release #$env:APPVEYOR_BUILD_VERSION (Build #$env:APPVEYOR_BUILD_NUMBER)"",
       ""url"": ""https://ci.appveyor.com/project/$env:APPVEYOR_ACCOUNT_NAME/$env:APPVEYOR_PROJECT_SLUG/build/$BUILD_VERSION"",
       ""icon_url"": ""$AVATAR""
     },
